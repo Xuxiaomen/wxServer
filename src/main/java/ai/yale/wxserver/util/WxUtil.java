@@ -30,14 +30,18 @@ import ai.yale.wxserver.vo.WxResultVo;
 
 
 public class WxUtil {
-	private static final String TOKEN = "fgx_2017";
-	private static final String APPID = "wxede20d9286db6756";
-	private static final String APPSECRET = "b548de5f324a3abc9cab2d9d32c49e15";
-	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-	private static final String UPLOAD_TEMPRORY_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
-//	private static final String UPLOAD_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=ACCESS_TOKEN";
-//	private static final String UPLOAD_NEWS_URL = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
-	private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+	public static final String TOKEN = "fgx_2017";
+	// 测试号lvjia
+//	public static final String APPID = "wxede20d9286db6756";
+//	public static final String APPSECRET = "b548de5f324a3abc9cab2d9d32c49e15";	
+	// 测试号xumeng
+	public static final String APPID = "wx89fc0d2eadcbb2d7";
+	public static final String APPSECRET = "436e89c974fe6303ada90e46e3e25ae8";
+	public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+	public static final String UPLOAD_TEMPRORY_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
+//	public static final String UPLOAD_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=ACCESS_TOKEN";
+//	public static final String UPLOAD_NEWS_URL = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
+	public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 	
 	
 	/**
