@@ -3,6 +3,7 @@ package ai.yale.wxserver.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -11,15 +12,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import ai.yale.wxserver.bean.Article;
 import ai.yale.wxserver.bean.NewsMessage;
 import ai.yale.wxserver.bean.TextMessage;
 import ai.yale.wxserver.vo.AccessTokenVo;
 import ai.yale.wxserver.vo.UploadTemporaryMeterialResultVo;
+import ai.yale.wxserver.vo.WxResultVo;
+
 
 public class WxUtil {
 	private static final String TOKEN = "fgx_2017";
@@ -29,6 +37,8 @@ public class WxUtil {
 	private static final String UPLOAD_TEMPRORY_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
 //	private static final String UPLOAD_METERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=ACCESS_TOKEN";
 //	private static final String UPLOAD_NEWS_URL = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
+	private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+	
 	
 	/**
 	 * 校验微信配置参数
@@ -137,6 +147,23 @@ public class WxUtil {
 	    restTemplate.getMessageConverters().add(new WxMessageConverter());
 		
 		UploadTemporaryMeterialResultVo vo = restTemplate.postForObject(url, param, UploadTemporaryMeterialResultVo.class);
+		return vo;
+
+	}
+	
+	/**
+	 * 创建微信菜单
+	 * @param accessToken
+	 * @param menu
+	 * @return
+	 */
+	public static WxResultVo createMenu(String accessToken, String menu) {
+		RestTemplate restTemplate = new RestTemplate();
+		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", accessToken);
+        System.out.println(menu);
+        JSONObject obj = JSON.parseObject(menu);
+		WxResultVo vo = restTemplate.postForObject(url, obj, WxResultVo.class);
+		System.out.println(vo.toString());
 		return vo;
 	}
 	
