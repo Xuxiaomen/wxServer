@@ -1,24 +1,37 @@
 package ai.yale.wxserver.util;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
 
 public class SecurityUtil {
 
 	/**
 	 * 对字符串sha1加密
+	 * 
 	 * @param src
 	 * @return
 	 */
 	public static String SHA1(String src) {
+		String result = null;
 		try {
-			MessageDigest sha1 = MessageDigest.getInstance("SHA-1");
-			sha1.update(src.getBytes());
-	        return new BigInteger(1, sha1.digest()).toString(16);
-		} catch (NoSuchAlgorithmException e) {
+			MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+			crypt.reset();
+			crypt.update(src.getBytes("UTF-8"));
+			result = byteToHex(crypt.digest());
+		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+
+		return result;
+	}
+
+	private static String byteToHex(final byte[] hash) {
+		Formatter formatter = new Formatter();
+		for (byte b : hash) {
+			formatter.format("%02x", b);
+		}
+		String result = formatter.toString();
+		formatter.close();
+		return result;
 	}
 }

@@ -129,7 +129,7 @@ public class WxService {
 	 */
 	@Scheduled(fixedRate = 60000)
 	public void checkAccessToken() {
-		System.out.println("检查 access token");
+		//System.out.println("检查 access token");
 		if (accessTokenVo == null || "".equals(accessTokenVo.getAccess_token())) {
 			// 如果不存在
 			accessTokenVo = WxUtil.getAccessToken();
