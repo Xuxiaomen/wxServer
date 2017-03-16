@@ -40,6 +40,7 @@ public class WxService {
 
 		if (WxUtil.checkSignature(vo.getSignature(), vo.getTimestamp(), vo.getNonce())) {
 			return vo.getEchostr();
+			
 		} else {
 			return null;
 		}

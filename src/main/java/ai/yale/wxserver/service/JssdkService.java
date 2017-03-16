@@ -1,5 +1,7 @@
 package ai.yale.wxserver.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,12 @@ public class JssdkService {
 	 * @return signatureVo
 	 */
 	
-	public RespMessage wxJsapiSignature() {
+	public RespMessage wxJsapiSignature(HttpServletRequest request) {
 		// 获取access_token
 		String accessToken = wxService.accessTokenVo.getAccess_token();
 		JsapiTicketVo vo = WxUtil.getJsapiTicket(accessToken);
 		
-		JsapiSignatureVo signatureVo = WxUtil.getJsapiSignature(vo.getTicket());
+		JsapiSignatureVo signatureVo = WxUtil.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
 		
 		return RespMessage.success(signatureVo);	
 	}

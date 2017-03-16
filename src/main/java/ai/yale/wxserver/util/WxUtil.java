@@ -45,7 +45,8 @@ public class WxUtil {
 	// "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
 	public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 	public static final String JSAPI_TICKET_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
-	public static final String JSSDK_URL = "http://yale-dev.s1.natapp.cc";
+	public static final String JSSDK_URL = "http://yale-dev.s1.natapp.cc/index.html";
+	public static final String JSAPI_SIGN_STRING = "jsapi_ticket=TICKET&noncestr=NONCESTR&timestamp=TIMESTAMP&url=URL";
 
 	/**
 	 * 校验微信配置参数
@@ -201,16 +202,16 @@ public class WxUtil {
 	 * @param accessToken
 	 * @return
 	 */
-	public static JsapiSignatureVo getJsapiSignature(String jsapiTicket){ 
+	public static JsapiSignatureVo getJsapiSignature(String jsapiTicket,String url){ 
 		JsapiSignatureVo vo = new JsapiSignatureVo();
 		vo.setNonceStr(UUID.randomUUID().toString());
 		vo.setTimestamp(System.currentTimeMillis() / 1000);
 		vo.setAppId(APPID);
-		String src = "jsapi_ticket=" + jsapiTicket +
-                "&noncestr=" + vo.getNonceStr() +
-                "×tamp=" + vo.getTimestamp() +
-                "&url=" + JSSDK_URL;
+		String src = JSAPI_SIGN_STRING.replace("TICKET", jsapiTicket).replace("NONCESTR", vo.getNonceStr())
+				.replace("TIMESTAMP", vo.getTimestamp()+"").replace("URL", url);
+		System.out.println(src);
 		vo.setSignature(SecurityUtil.SHA1(src));
+		System.out.println(vo.toString());
 		return vo;
     } 
 
