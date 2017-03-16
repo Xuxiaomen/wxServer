@@ -25,6 +25,10 @@ import ai.yale.wxserver.bean.TextMessage;
 import ai.yale.wxserver.vo.AccessTokenVo;
 import ai.yale.wxserver.vo.JsapiSignatureVo;
 import ai.yale.wxserver.vo.JsapiTicketVo;
+import ai.yale.wxserver.vo.LinkRespMessageVo;
+import ai.yale.wxserver.vo.LongLinkToShortLinkVo;
+import ai.yale.wxserver.vo.QRCodeRequestVo;
+import ai.yale.wxserver.vo.QRCodeTicketVo;
 import ai.yale.wxserver.vo.UploadTemporaryMeterialResultVo;
 import ai.yale.wxserver.vo.WxResultVo;
 
@@ -45,9 +49,10 @@ public class WxUtil {
 	// "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
 	public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 	public static final String JSAPI_TICKET_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
-	public static final String JSSDK_URL = "http://yale-dev.s1.natapp.cc/index.html";
 	public static final String JSAPI_SIGN_STRING = "jsapi_ticket=TICKET&noncestr=NONCESTR&timestamp=TIMESTAMP&url=URL";
-
+	public static final String CREATE_QRCODE_URL = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
+	public static final String CREATE_QRCODEIMAGE_URL = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";
+	public static final String LONGLINK_TO_SHORTLINK_URL = "https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN";
 	/**
 	 * 校验微信配置参数
 	 * 
@@ -104,7 +109,7 @@ public class WxUtil {
 		reply.setCreateTime((new Date()).getTime());
 		reply.setMsgType(MessageUtil.MESSAGE_TEXT);
 		reply.setContent(content);
-
+//		System.out.println(reply);
 		return MessageUtil.textMessageToXml(reply);
 	}
 
@@ -214,5 +219,26 @@ public class WxUtil {
 		System.out.println(vo.toString());
 		return vo;
     } 
-
+	
+	/**
+	 * 创建二维码ticket
+	 */
+	public static QRCodeTicketVo createQRCodeTicket(String accessToken, QRCodeRequestVo vo) {
+		RestTemplate restTemplate = new RestTemplate();
+		String url = CREATE_QRCODE_URL.replace("TOKEN", accessToken);
+		QRCodeTicketVo result = restTemplate.postForObject(url, vo, QRCodeTicketVo.class);
+		System.out.println(result.toString());
+		return result;
+	}	
+	
+	/**
+	 * 长链接转换成短链接
+	 */
+	public static LinkRespMessageVo linkLongToShort(String accessToken, LongLinkToShortLinkVo vo) {
+		RestTemplate restTemplate = new RestTemplate();
+		String url = LONGLINK_TO_SHORTLINK_URL.replace("ACCESS_TOKEN", accessToken);
+		LinkRespMessageVo result = restTemplate.postForObject(url, vo, LinkRespMessageVo.class);
+		System.out.println(result.toString());
+		return result;
+	}	
 }

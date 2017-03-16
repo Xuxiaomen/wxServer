@@ -24,7 +24,7 @@ public class WxAuthService {
 	 * @throws IOException
 	 */
 	public void wxAuth(HttpServletResponse response) throws IOException {
-		String backUrl = "http://muimuimui.duapp.com/callback";
+		String backUrl = "http://yale-dev.s1.natapp.cc/callback";
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + WxUtil.APPID + "&redirect_uri="
 				+ URLEncoder.encode(backUrl, "utf-8") + "&response_type=code" + "&scope=snsapi_userinfo"
 				+ "&state=STATE#wechat_redirect";

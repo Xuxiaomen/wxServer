@@ -65,7 +65,7 @@ public class WxService {
 		
 		switch (msgType) {
 		case MessageUtil.MESSAGE_TEXT:
-			// reply = WxUtil.replyTextMessage(map, "你好");
+			 reply = WxUtil.replyTextMessage(map, "你好");
 			
 			if (map.get("Content").equals("1")) {
 				Article article = new Article();
