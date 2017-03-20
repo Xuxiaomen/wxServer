@@ -42,32 +42,31 @@ public class Configuration {
 	// 微信服务号密钥
 	public String appSecret;
 	//公众平台的API调用所需的access_token接口的URL地址
-	public String access_token_url;
+	public String accessTokenUrl;
 	//公众平台的API调用临时素材的mediaId接口的URL地址
-	public String upload_temprory_meterial_url; 
+	public String uploadTemproryMeterialUrl; 
 	// public static final String UPLOAD_METERIAL_URL =
 	// "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=ACCESS_TOKEN
 	// public static final String UPLOAD_NEWS_URL =
 	// "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN
 	//自定义菜单创建接口的URL地址
-	public String  create_menu_url; 
+	public String  createMenuUrl; 
 	//JSAPI调用所需的jsapi_ticket接口的URL地址
-	public String  jsapi_ticket_url; 
+	public String  jsapiTicketUrl; 
 	//生成JS-SDK权限验证的签名
-	public String  jsapi_sign_string; 
+	public String  jsapiSignString; 
 	//创建二维码ticket请求的URL地址
-	public String  create_qrCode_url;
+	public String  createQrcodeUrl;
 	//通过ticket换取二维码图片的URL地址
-	public String  create_qrCodeImage_url;
+	public String  createQrcodeimageUrl;
 	//长链接转短链接接口的URL地址
-	public String  longLink_to_shortLink_url; 
+	public String  longlinkToShortlinkUrl; 
 	//用户分析中获取用户增减数据接口
-	public String  getUserSummary_url; 
+	public String  getUserSummaryUrl; 
 	//用户分析中获取累计用户数据接口
-	public String  getUserCumulate_url; 
+	public String  getUserCumulateUrl; 
 	//
-	public String  weixinFaqRobot_url;
-	
+	public String  weixinFaqrobotUrl;
 	public String getToken() {
 		return token;
 	}
@@ -86,71 +85,71 @@ public class Configuration {
 	public void setAppSecret(String appSecret) {
 		this.appSecret = appSecret;
 	}
-	public String getAccess_token_url() {
-		return access_token_url;
+	public String getAccessTokenUrl() {
+		return accessTokenUrl;
 	}
-	public void setAccess_token_url(String access_token_url) {
-		this.access_token_url = access_token_url;
+	public void setAccessTokenUrl(String accessTokenUrl) {
+		this.accessTokenUrl = accessTokenUrl;
 	}
-	public String getUpload_temprory_meterial_url() {
-		return upload_temprory_meterial_url;
+	public String getUploadTemproryMeterialUrl() {
+		return uploadTemproryMeterialUrl;
 	}
-	public void setUpload_temprory_meterial_url(String upload_temprory_meterial_url) {
-		this.upload_temprory_meterial_url = upload_temprory_meterial_url;
+	public void setUploadTemproryMeterialUrl(String uploadTemproryMeterialUrl) {
+		this.uploadTemproryMeterialUrl = uploadTemproryMeterialUrl;
 	}
-	public String getCreate_menu_url() {
-		return create_menu_url;
+	public String getCreateMenuUrl() {
+		return createMenuUrl;
 	}
-	public void setCreate_menu_url(String create_menu_url) {
-		this.create_menu_url = create_menu_url;
+	public void setCreateMenuUrl(String createMenuUrl) {
+		this.createMenuUrl = createMenuUrl;
 	}
-	public String getJsapi_ticket_url() {
-		return jsapi_ticket_url;
+	public String getJsapiTicketUrl() {
+		return jsapiTicketUrl;
 	}
-	public void setJsapi_ticket_url(String jsapi_ticket_url) {
-		this.jsapi_ticket_url = jsapi_ticket_url;
+	public void setJsapiTicketUrl(String jsapiTicketUrl) {
+		this.jsapiTicketUrl = jsapiTicketUrl;
 	}
-	public String getJsapi_sign_string() {
-		return jsapi_sign_string;
+	public String getJsapiSignString() {
+		return jsapiSignString;
 	}
-	public void setJsapi_sign_string(String jsapi_sign_string) {
-		this.jsapi_sign_string = jsapi_sign_string;
+	public void setJsapiSignString(String jsapiSignString) {
+		this.jsapiSignString = jsapiSignString;
 	}
-	public String getCreate_qrCode_url() {
-		return create_qrCode_url;
+	public String getCreateQrcodeUrl() {
+		return createQrcodeUrl;
 	}
-	public void setCreate_qrCode_url(String create_qrCode_url) {
-		this.create_qrCode_url = create_qrCode_url;
+	public void setCreateQrcodeUrl(String createQrcodeUrl) {
+		this.createQrcodeUrl = createQrcodeUrl;
 	}
-	public String getCreate_qrCodeImage_url() {
-		return create_qrCodeImage_url;
+	public String getCreateQrcodeimageUrl() {
+		return createQrcodeimageUrl;
 	}
-	public void setCreate_qrCodeImage_url(String create_qrCodeImage_url) {
-		this.create_qrCodeImage_url = create_qrCodeImage_url;
+	public void setCreateQrcodeimageUrl(String createQrcodeimageUrl) {
+		this.createQrcodeimageUrl = createQrcodeimageUrl;
 	}
-	public String getLongLink_to_shortLink_url() {
-		return longLink_to_shortLink_url;
+	public String getLonglinkToShortlinkUrl() {
+		return longlinkToShortlinkUrl;
 	}
-	public void setLongLink_to_shortLink_url(String longLink_to_shortLink_url) {
-		this.longLink_to_shortLink_url = longLink_to_shortLink_url;
+	public void setLonglinkToShortlinkUrl(String longlinkToShortlinkUrl) {
+		this.longlinkToShortlinkUrl = longlinkToShortlinkUrl;
 	}
-	public String getGetUserSummary_url() {
-		return getUserSummary_url;
+	public String getGetUserSummaryUrl() {
+		return getUserSummaryUrl;
 	}
-	public void setGetUserSummary_url(String getUserSummary_url) {
-		this.getUserSummary_url = getUserSummary_url;
+	public void setGetUserSummaryUrl(String getUserSummaryUrl) {
+		this.getUserSummaryUrl = getUserSummaryUrl;
 	}
-	public String getGetUserCumulate_url() {
-		return getUserCumulate_url;
+	public String getGetUserCumulateUrl() {
+		return getUserCumulateUrl;
 	}
-	public void setGetUserCumulate_url(String getUserCumulate_url) {
-		this.getUserCumulate_url = getUserCumulate_url;
+	public void setGetUserCumulateUrl(String getUserCumulateUrl) {
+		this.getUserCumulateUrl = getUserCumulateUrl;
 	}
-	public String getWeixinFaqRobot_url() {
-		return weixinFaqRobot_url;
+	public String getWeixinFaqrobotUrl() {
+		return weixinFaqrobotUrl;
 	}
-	public void setWeixinFaqRobot_url(String weixinFaqRobot_url) {
-		this.weixinFaqRobot_url = weixinFaqRobot_url;
+	public void setWeixinFaqrobotUrl(String weixinFaqrobotUrl) {
+		this.weixinFaqrobotUrl = weixinFaqrobotUrl;
 	}
 	public static String getMessageText() {
 		return MESSAGE_TEXT;

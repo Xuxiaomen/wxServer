@@ -129,7 +129,7 @@ public class WxUtil {
 	 */
 	public AccessTokenVo getAccessToken() {
 		RestTemplate restTemplate = new RestTemplate();
-		String url =  configuration.getAccess_token_url().replace("APPID", configuration.getAppId()).replace("APPSECRET", configuration.getAppSecret());
+		String url =  configuration.getAccessTokenUrl().replace("APPID", configuration.getAppId()).replace("APPSECRET", configuration.getAppSecret());
 		AccessTokenVo vo = restTemplate.getForObject(url, AccessTokenVo.class);
 		System.out.println(vo);
 		return vo;
@@ -142,7 +142,7 @@ public class WxUtil {
 	 */
 	public UploadTemporaryMeterialResultVo uploadTemporaryMeterial(String accessToken, String type, File file) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getUpload_temprory_meterial_url().replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
+		String url = configuration.getUploadTemproryMeterialUrl().replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
 		FileSystemResource fileSystemResource = new FileSystemResource(file);
 		MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
 		param.add("file", fileSystemResource);
@@ -170,7 +170,7 @@ public class WxUtil {
 	 */
 	public WxResultVo createMenu(String accessToken, String menu) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getCreate_menu_url().replace("ACCESS_TOKEN", accessToken);
+		String url = configuration.getCreateMenuUrl().replace("ACCESS_TOKEN", accessToken);
 		System.out.println(menu);
 		JSONObject obj = JSON.parseObject(menu);
 		WxResultVo vo = restTemplate.postForObject(url, obj, WxResultVo.class);
@@ -185,7 +185,7 @@ public class WxUtil {
 	 * @return JsapiTicketVo
 	 */
 	public JsapiTicketVo getJsapiTicket(String accessToken){ 
-        String url = configuration.getJsapi_ticket_url().replace("ACCESS_TOKEN", accessToken);
+        String url = configuration.getJsapiTicketUrl().replace("ACCESS_TOKEN", accessToken);
         RestTemplate restTemplate = new RestTemplate();
         JsapiTicketVo vo = restTemplate.getForObject(url, JsapiTicketVo.class);
 		System.out.println(vo.toString());
@@ -202,7 +202,7 @@ public class WxUtil {
 		vo.setNonceStr(UUID.randomUUID().toString());
 		vo.setTimestamp(System.currentTimeMillis() / 1000);
 		vo.setAppId(configuration.getAppId());
-		String src = configuration.getJsapi_sign_string().replace("TICKET", jsapiTicket).replace("NONCESTR", vo.getNonceStr())
+		String src = configuration.getJsapiSignString().replace("TICKET", jsapiTicket).replace("NONCESTR", vo.getNonceStr())
 				.replace("TIMESTAMP", vo.getTimestamp()+"").replace("URL", url);
 		System.out.println(src);
 		vo.setSignature(SecurityUtil.SHA1(src));
@@ -215,7 +215,7 @@ public class WxUtil {
 	 */
 	public QRCodeTicketVo createQRCodeTicket(String accessToken, QRCodeRequestVo vo) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getCreate_qrCode_url().replace("TOKEN", accessToken);
+		String url = configuration.getCreateQrcodeUrl().replace("TOKEN", accessToken);
 		QRCodeTicketVo result = restTemplate.postForObject(url, vo, QRCodeTicketVo.class);
 		System.out.println(result.toString());
 		return result;
@@ -226,7 +226,7 @@ public class WxUtil {
 	 */
 	public LinkRespMessageVo linkLongToShort(String accessToken, LongLinkToShortLinkVo vo) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getLongLink_to_shortLink_url().replace("ACCESS_TOKEN", accessToken);
+		String url = configuration.getLonglinkToShortlinkUrl().replace("ACCESS_TOKEN", accessToken);
 		LinkRespMessageVo result = restTemplate.postForObject(url, vo, LinkRespMessageVo.class);
 		System.out.println(result.toString());
 		return result;
@@ -240,7 +240,7 @@ public class WxUtil {
 	 */
 	public SummaryUserDataVo userDataSummary(String accessToken, DateVo vo) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getGetUserSummary_url().replace("ACCESS_TOKEN", accessToken);
+		String url = configuration.getGetUserSummaryUrl().replace("ACCESS_TOKEN", accessToken);
 		SummaryUserDataVo result = restTemplate.postForObject(url, vo, SummaryUserDataVo.class);
 		System.out.println(result.toString());
 		return result;
@@ -253,7 +253,7 @@ public class WxUtil {
 	 */
 	public AccumulatedUserDataVo userDateAccumulated(String accessToken, DateVo vo) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = configuration.getGetUserCumulate_url().replace("ACCESS_TOKEN", accessToken);
+		String url = configuration.getGetUserCumulateUrl().replace("ACCESS_TOKEN", accessToken);
 		AccumulatedUserDataVo result = restTemplate.postForObject(url, vo, AccumulatedUserDataVo.class);
 		System.out.println(result.toString());
 		return result;
@@ -268,7 +268,7 @@ public class WxUtil {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
-		String url = configuration.getWeixinFaqRobot_url();
+		String url = configuration.getWeixinFaqrobotUrl();
 		FaqRobotTextMessageReplyVo result = restTemplate.postForObject(url, map, FaqRobotTextMessageReplyVo.class);
 		System.out.println(result.toString());
 		return MessageUtil.newsMessageToXml(result);

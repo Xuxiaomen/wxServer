@@ -56,7 +56,7 @@ public class AccountService {
 		actionInfoVo.setScene(sceneVo);
 		requestVo.setAction_info(actionInfoVo);
 		QRCodeTicketVo qrCodeTicketVo = wxUtil.createQRCodeTicket(wxService.accessTokenVo.getAccess_token(), requestVo);
-		String ImageUrl = configuration.getCreate_qrCodeImage_url().replace("TICKET", qrCodeTicketVo.getTicket());
+		String ImageUrl = configuration.getCreateQrcodeimageUrl().replace("TICKET", qrCodeTicketVo.getTicket());
 		qrCodeResultVo = new QRCodeResultVo();
 		qrCodeResultVo.setQRCodeImageUrl(ImageUrl);
 		qrCodeResultVo.setQRCodeLinkUrl(qrCodeTicketVo.getUrl());
