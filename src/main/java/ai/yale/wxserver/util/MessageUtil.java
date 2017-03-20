@@ -16,21 +16,9 @@ import com.thoughtworks.xstream.XStream;
 import ai.yale.wxserver.bean.Article;
 import ai.yale.wxserver.bean.NewsMessage;
 import ai.yale.wxserver.bean.TextMessage;
+import ai.yale.wxserver.vo.FaqRobotTextMessageReplyVo;
 
 public class MessageUtil {
-	
-	public static final String MESSAGE_TEXT = "text";
-	public static final String MESSAGE_IMAGE = "image";
-	public static final String MESSAGE_NEWS = "news";
-	public static final String MESSAGE_VOICE = "voice";
-	public static final String MESSAGE_VIDEO = "video";
-	public static final String MESSAGE_LINK = "link";
-	public static final String MESSAGE_LOCATION = "location";
-	public static final String MESSAGE_EVENT = "event";
-	public static final String MESSAGE_SUBSCRIBE = "subscribe";
-	public static final String MESSAGE_UNSUBSCRIBE = "unsubscribe";
-	public static final String MESSAGE_CLICK = "CLICK";
-	public static final String MESSAGE_VIEW = "VIEW";
 	
 	/**
 	 * 转换inputStream 到 map
@@ -84,5 +72,17 @@ public class MessageUtil {
 		xStream.alias("xml", message.getClass());
 		xStream.alias("item", (new Article()).getClass());		
 		return xStream.toXML(message);
+	}
+	
+	/**
+	 * 云问文本消息转换xml
+	 * @param message
+	 * @return
+	 */
+	public static String newsMessageToXml(FaqRobotTextMessageReplyVo result) {
+		XStream xStream = new XStream();
+		xStream.alias("xml", result.getClass());
+		xStream.alias("item", (new Article()).getClass());		
+		return xStream.toXML(result);
 	}
 }

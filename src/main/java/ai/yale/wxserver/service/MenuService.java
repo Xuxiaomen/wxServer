@@ -19,9 +19,12 @@ public class MenuService {
 	@Autowired
 	WxService wxService;
 	
+	@Autowired
+	WxUtil wxUtil;
+	
 	public RespMessage createMenu(MenuJsonVo vo) {
 		// TODO Auto-generated method stub
-		WxResultVo result = WxUtil.createMenu(wxService.accessTokenVo.getAccess_token(), vo.getMenuJson());
+		WxResultVo result = wxUtil.createMenu(wxService.accessTokenVo.getAccess_token(), vo.getMenuJson());
 		if (result.getErrcode() == 0) {
 			return RespMessage.success();
 		}

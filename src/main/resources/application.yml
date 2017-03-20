@@ -1,0 +1,16 @@
+configuration: 
+  #微信参数配置
+  token: fgx_2017
+  appId: wx89fc0d2eadcbb2d7
+  appSecret: 436e89c974fe6303ada90e46e3e25ae8
+  access_token_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  upload_temprory_meterial_url: https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
+  create_menu_url: https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+  jsapi_ticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
+  jsapi_sign_string: jsapi_ticket=TICKET&noncestr=NONCESTR&timestamp=TIMESTAMP&url=URL
+  create_qrCode_url: https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN
+  create_qrCodeImage_url: https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET
+  longLink_to_shortLink_url: https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN
+  getUserSummary_url: https://api.weixin.qq.com/datacube/getusersummary?access_token=ACCESS_TOKEN
+  getUserCumulate_url: https://api.weixin.qq.com/datacube/getusercumulate?access_token=ACCESS_TOKEN
+  weixinFaqRobot_url: http://v3.faqrobot.org/servlet/WXChat?appKey=faqrobot&sourceId=1&sysNum=14353009367704084&wxcId=711

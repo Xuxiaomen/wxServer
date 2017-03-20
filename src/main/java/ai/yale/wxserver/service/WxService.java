@@ -7,11 +7,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import ai.yale.wxserver.bean.Article;
-import ai.yale.wxserver.util.MessageUtil;
+import ai.yale.wxserver.util.Configuration;
 import ai.yale.wxserver.util.RespMessage;
 import ai.yale.wxserver.util.WxUtil;
 import ai.yale.wxserver.vo.AccessTokenVo;
@@ -24,6 +25,9 @@ import ai.yale.wxserver.vo.WxVo;
  */
 @Service
 public class WxService {
+	
+	@Autowired
+	WxUtil wxUtil;
 	
 	public AccessTokenVo accessTokenVo;
 	public Long lastRefreshedTime;
@@ -38,7 +42,7 @@ public class WxService {
 			return null;
 		}
 
-		if (WxUtil.checkSignature(vo.getSignature(), vo.getTimestamp(), vo.getNonce())) {
+		if (wxUtil.checkSignature(vo.getSignature(), vo.getTimestamp(), vo.getNonce())) {
 			return vo.getEchostr();
 			
 		} else {
@@ -64,8 +68,9 @@ public class WxService {
 		String reply = null;
 		
 		switch (msgType) {
-		case MessageUtil.MESSAGE_TEXT:
+		case Configuration.MESSAGE_TEXT:
 			 reply = WxUtil.replyTextMessage(map, "你好");
+			 System.out.println(reply);
 			
 			if (map.get("Content").equals("1")) {
 				Article article = new Article();
@@ -100,20 +105,20 @@ public class WxService {
 			}
 
 			break;
-		case MessageUtil.MESSAGE_EVENT:
+		case Configuration.MESSAGE_EVENT:
 			String event = map.get("Event");
-			if (MessageUtil.MESSAGE_SUBSCRIBE.equals(event)) {
+			if (Configuration.MESSAGE_SUBSCRIBE.equals(event)) {
 				// 订阅消息
 				reply = WxUtil.replyTextMessage(map, "欢迎订阅");
-			} else if (MessageUtil.MESSAGE_UNSUBSCRIBE.equals(event)) {
+			} else if (Configuration.MESSAGE_UNSUBSCRIBE.equals(event)) {
 				// 取消订阅消息
 				reply = WxUtil.replyTextMessage(map, "。。。");
 			}
 			break;
-		case MessageUtil.MESSAGE_IMAGE:
+		case Configuration.MESSAGE_IMAGE:
 			
 			break;
-		case MessageUtil.MESSAGE_LINK:
+		case Configuration.MESSAGE_LINK:
 			
 			break;
 
@@ -133,13 +138,13 @@ public class WxService {
 		//System.out.println("检查 access token");
 		if (accessTokenVo == null || "".equals(accessTokenVo.getAccess_token())) {
 			// 如果不存在
-			accessTokenVo = WxUtil.getAccessToken();
+			accessTokenVo = wxUtil.getAccessToken();
 			lastRefreshedTime = new Date().getTime();
 		} else {
 			// 检查有效时间 设置为7000秒
 			Long currentTime = new Date().getTime();
 			if (currentTime - lastRefreshedTime > 7000 * 1000) {
-				accessTokenVo = WxUtil.getAccessToken();
+				accessTokenVo = wxUtil.getAccessToken();
 				lastRefreshedTime = new Date().getTime();
 			}
 		}

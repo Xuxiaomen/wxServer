@@ -3,6 +3,7 @@ package ai.yale.wxserver.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ai.yale.wxserver.util.Configuration;
 import ai.yale.wxserver.util.RespMessage;
 import ai.yale.wxserver.util.WxUtil;
 import ai.yale.wxserver.vo.QRCodeTicketVo;
@@ -20,6 +21,12 @@ public class AccountService {
 	 */
 	@Autowired
 	WxService wxService;
+	
+	@Autowired 
+	Configuration configuration;
+	
+	@Autowired
+	WxUtil wxUtil;
 	
 	public QRCodeResultVo qrCodeResultVo;
 	
@@ -48,8 +55,8 @@ public class AccountService {
 		ActionInfoVo actionInfoVo = new ActionInfoVo();
 		actionInfoVo.setScene(sceneVo);
 		requestVo.setAction_info(actionInfoVo);
-		QRCodeTicketVo qrCodeTicketVo = WxUtil.createQRCodeTicket(wxService.accessTokenVo.getAccess_token(), requestVo);
-		String ImageUrl = WxUtil.CREATE_QRCODEIMAGE_URL.replace("TICKET", qrCodeTicketVo.getTicket());
+		QRCodeTicketVo qrCodeTicketVo = wxUtil.createQRCodeTicket(wxService.accessTokenVo.getAccess_token(), requestVo);
+		String ImageUrl = configuration.getCreate_qrCodeImage_url().replace("TICKET", qrCodeTicketVo.getTicket());
 		qrCodeResultVo = new QRCodeResultVo();
 		qrCodeResultVo.setQRCodeImageUrl(ImageUrl);
 		qrCodeResultVo.setQRCodeLinkUrl(qrCodeTicketVo.getUrl());

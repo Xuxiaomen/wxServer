@@ -17,6 +17,9 @@ public class JssdkService {
 	@Autowired
 	WxService wxService;
 	
+	@Autowired
+	WxUtil wxUtil;
+	
 	/**
 	 * JS-SDK使用权限签名算法
 	 * @return signatureVo
@@ -25,9 +28,9 @@ public class JssdkService {
 	public RespMessage wxJsapiSignature(HttpServletRequest request) {
 		// 获取access_token
 		String accessToken = wxService.accessTokenVo.getAccess_token();
-		JsapiTicketVo vo = WxUtil.getJsapiTicket(accessToken);
+		JsapiTicketVo vo = wxUtil.getJsapiTicket(accessToken);
 		
-		JsapiSignatureVo signatureVo = WxUtil.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
+		JsapiSignatureVo signatureVo = wxUtil.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
 		
 		return RespMessage.success(signatureVo);	
 	}
