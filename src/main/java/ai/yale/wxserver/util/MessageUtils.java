@@ -18,7 +18,12 @@ import ai.yale.wxserver.bean.NewsMessage;
 import ai.yale.wxserver.bean.TextMessage;
 import ai.yale.wxserver.vo.FaqRobotTextMessageReplyVo;
 
-public class MessageUtil {
+/**
+ * 消息类型转换
+ * @author xumeng
+ *
+ */
+public class MessageUtils {
 	
 	/**
 	 * 转换inputStream 到 map

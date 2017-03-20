@@ -13,10 +13,15 @@ import org.springframework.web.client.RestTemplate;
 import ai.yale.wxserver.util.Configuration;
 import ai.yale.wxserver.util.RespMessage;
 import ai.yale.wxserver.util.WxMessageConverter;
-import ai.yale.wxserver.util.WxUtil;
 import ai.yale.wxserver.vo.AccessTokenVo;
 import ai.yale.wxserver.vo.UserInfoVo;
 
+/**
+ * @Title: WxAuthService
+ * @Description: 微信授权登录
+ * @author xumeng
+ *
+ */
 @Service
 public class WxAuthService {
 	

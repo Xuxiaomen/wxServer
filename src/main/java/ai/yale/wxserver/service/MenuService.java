@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ai.yale.wxserver.util.RespMessage;
-import ai.yale.wxserver.util.WxUtil;
+import ai.yale.wxserver.util.WxUtils;
 import ai.yale.wxserver.vo.MenuJsonVo;
 import ai.yale.wxserver.vo.WxResultVo;
 
@@ -20,11 +20,11 @@ public class MenuService {
 	WxService wxService;
 	
 	@Autowired
-	WxUtil wxUtil;
+	WxUtils wxUtils;
 	
 	public RespMessage createMenu(MenuJsonVo vo) {
 		// TODO Auto-generated method stub
-		WxResultVo result = wxUtil.createMenu(wxService.accessTokenVo.getAccess_token(), vo.getMenuJson());
+		WxResultVo result = wxUtils.createMenu(wxService.accessTokenVo.getAccess_token(), vo.getMenuJson());
 		if (result.getErrcode() == 0) {
 			return RespMessage.success();
 		}

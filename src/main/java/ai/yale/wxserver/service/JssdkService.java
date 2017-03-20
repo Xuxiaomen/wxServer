@@ -6,10 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ai.yale.wxserver.util.RespMessage;
-import ai.yale.wxserver.util.WxUtil;
+import ai.yale.wxserver.util.WxUtils;
 import ai.yale.wxserver.vo.JsapiTicketVo;
 import ai.yale.wxserver.vo.JsapiSignatureVo;
 
+/**
+ * @Title: JssdkService
+ * @Description: jssdk获取签名
+ * @author xumeng
+ *
+ */
 @Service
 public class JssdkService {
 	public JsapiTicketVo jsapiTicketVo;
@@ -18,7 +24,7 @@ public class JssdkService {
 	WxService wxService;
 	
 	@Autowired
-	WxUtil wxUtil;
+	WxUtils wxUtils;
 	
 	/**
 	 * JS-SDK使用权限签名算法
@@ -28,9 +34,9 @@ public class JssdkService {
 	public RespMessage wxJsapiSignature(HttpServletRequest request) {
 		// 获取access_token
 		String accessToken = wxService.accessTokenVo.getAccess_token();
-		JsapiTicketVo vo = wxUtil.getJsapiTicket(accessToken);
+		JsapiTicketVo vo = wxUtils.getJsapiTicket(accessToken);
 		
-		JsapiSignatureVo signatureVo = wxUtil.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
+		JsapiSignatureVo signatureVo = wxUtils.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
 		
 		return RespMessage.success(signatureVo);	
 	}

@@ -3,7 +3,12 @@ package ai.yale.wxserver.util;
 import java.security.MessageDigest;
 import java.util.Formatter;
 
-public class SecurityUtil {
+/**
+ * 对字符串进行加密解密公共库
+ * @author xumeng
+ *
+ */
+public class SecurityUtils {
 
 	/**
 	 * 对字符串sha1加密

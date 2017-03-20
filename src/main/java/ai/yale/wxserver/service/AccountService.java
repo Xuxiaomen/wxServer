@@ -5,13 +5,19 @@ import org.springframework.stereotype.Service;
 
 import ai.yale.wxserver.util.Configuration;
 import ai.yale.wxserver.util.RespMessage;
-import ai.yale.wxserver.util.WxUtil;
+import ai.yale.wxserver.util.WxUtils;
 import ai.yale.wxserver.vo.QRCodeTicketVo;
 import ai.yale.wxserver.vo.SceneVo;
 import ai.yale.wxserver.vo.ActionInfoVo;
 import ai.yale.wxserver.vo.QRCodeRequestVo;
 import ai.yale.wxserver.vo.QRCodeResultVo;
 
+/**
+ * @Title: AccountService
+ * @Description: 微信二维码获取
+ * @author xumeng
+ *
+ */
 @Service
 public class AccountService {
 	/**
@@ -26,7 +32,7 @@ public class AccountService {
 	Configuration configuration;
 	
 	@Autowired
-	WxUtil wxUtil;
+	WxUtils wxUtils;
 	
 	public QRCodeResultVo qrCodeResultVo;
 	
@@ -37,9 +43,6 @@ public class AccountService {
 //			return RespMessage.success(qrCodeTicketVo);
 //		}
 //	}
-	
-	
-	
 	public RespMessage creatQRCode() {
 		if (qrCodeResultVo != null && !qrCodeResultVo.getQRCodeImageUrl().equals("")) {
 			return RespMessage.success(qrCodeResultVo);
@@ -55,7 +58,7 @@ public class AccountService {
 		ActionInfoVo actionInfoVo = new ActionInfoVo();
 		actionInfoVo.setScene(sceneVo);
 		requestVo.setAction_info(actionInfoVo);
-		QRCodeTicketVo qrCodeTicketVo = wxUtil.createQRCodeTicket(wxService.accessTokenVo.getAccess_token(), requestVo);
+		QRCodeTicketVo qrCodeTicketVo = wxUtils.createQRCodeTicket(wxService.accessTokenVo.getAccess_token(), requestVo);
 		String ImageUrl = configuration.getCreateQrcodeimageUrl().replace("TICKET", qrCodeTicketVo.getTicket());
 		qrCodeResultVo = new QRCodeResultVo();
 		qrCodeResultVo.setQRCodeImageUrl(ImageUrl);

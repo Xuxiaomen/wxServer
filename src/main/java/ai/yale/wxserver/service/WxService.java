@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import ai.yale.wxserver.bean.Article;
 import ai.yale.wxserver.util.Configuration;
 import ai.yale.wxserver.util.RespMessage;
-import ai.yale.wxserver.util.WxUtil;
+import ai.yale.wxserver.util.WxUtils;
 import ai.yale.wxserver.vo.AccessTokenVo;
 import ai.yale.wxserver.vo.WxVo;
 
@@ -27,7 +27,7 @@ import ai.yale.wxserver.vo.WxVo;
 public class WxService {
 	
 	@Autowired
-	WxUtil wxUtil;
+	WxUtils wxUtils;
 	
 	public AccessTokenVo accessTokenVo;
 	public Long lastRefreshedTime;
@@ -42,7 +42,7 @@ public class WxService {
 			return null;
 		}
 
-		if (wxUtil.checkSignature(vo.getSignature(), vo.getTimestamp(), vo.getNonce())) {
+		if (wxUtils.checkSignature(vo.getSignature(), vo.getTimestamp(), vo.getNonce())) {
 			return vo.getEchostr();
 			
 		} else {
@@ -57,7 +57,7 @@ public class WxService {
 	 */
 	public String wxMessage(HttpServletRequest request) {
 
-		Map<String, String> map = WxUtil.receiveMessage(request);
+		Map<String, String> map = WxUtils.receiveMessage(request);
 		System.out.println(map.toString());
 		if (map == null || map.size() == 0) {
 			return null;
@@ -69,7 +69,7 @@ public class WxService {
 		
 		switch (msgType) {
 		case Configuration.MESSAGE_TEXT:
-			 reply = WxUtil.replyTextMessage(map, "你好");
+			 reply = WxUtils.replyTextMessage(map, "你好");
 			 System.out.println(reply);
 			
 			if (map.get("Content").equals("1")) {
@@ -89,7 +89,7 @@ public class WxService {
 				article1.setUrl("http://www.baidu.com");
 				
 				articles.add(article1);
-				reply = WxUtil.replyNewsMessage(map, articles);
+				reply = WxUtils.replyNewsMessage(map, articles);
 				System.out.println(reply);
 			} else if (map.get("Content").equals("2")) {
 				Article article = new Article();
@@ -101,7 +101,7 @@ public class WxService {
 				List<Article> articles = new ArrayList<>();
 				articles.add(article);
 
-				reply = WxUtil.replyNewsMessage(map, articles);
+				reply = WxUtils.replyNewsMessage(map, articles);
 			}
 
 			break;
@@ -109,10 +109,10 @@ public class WxService {
 			String event = map.get("Event");
 			if (Configuration.MESSAGE_SUBSCRIBE.equals(event)) {
 				// 订阅消息
-				reply = WxUtil.replyTextMessage(map, "欢迎订阅");
+				reply = WxUtils.replyTextMessage(map, "欢迎订阅");
 			} else if (Configuration.MESSAGE_UNSUBSCRIBE.equals(event)) {
 				// 取消订阅消息
-				reply = WxUtil.replyTextMessage(map, "。。。");
+				reply = WxUtils.replyTextMessage(map, "。。。");
 			}
 			break;
 		case Configuration.MESSAGE_IMAGE:
@@ -138,13 +138,13 @@ public class WxService {
 		//System.out.println("检查 access token");
 		if (accessTokenVo == null || "".equals(accessTokenVo.getAccess_token())) {
 			// 如果不存在
-			accessTokenVo = wxUtil.getAccessToken();
+			accessTokenVo = wxUtils.getAccessToken();
 			lastRefreshedTime = new Date().getTime();
 		} else {
 			// 检查有效时间 设置为7000秒
 			Long currentTime = new Date().getTime();
 			if (currentTime - lastRefreshedTime > 7000 * 1000) {
-				accessTokenVo = wxUtil.getAccessToken();
+				accessTokenVo = wxUtils.getAccessToken();
 				lastRefreshedTime = new Date().getTime();
 			}
 		}

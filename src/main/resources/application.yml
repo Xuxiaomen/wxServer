@@ -1,5 +1,4 @@
-configuration: 
-  #微信参数配置
+configuration: #微信参数配置
   token: fgx_2017
   app-id: wx89fc0d2eadcbb2d7
   app-secret: 436e89c974fe6303ada90e46e3e25ae8
@@ -13,4 +12,3 @@ configuration:
   longlink-to-shortlink-url: https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN
   get-user-summary-url: https://api.weixin.qq.com/datacube/getusersummary?access_token=ACCESS_TOKEN
   get-user-cumulate-url: https://api.weixin.qq.com/datacube/getusercumulate?access_token=ACCESS_TOKEN
-  weixin-faqrobot-url: http://v3.faqrobot.org/servlet/WXChat?appKey=faqrobot&sourceId=1&sysNum=14353009367704084&wxcId=711
