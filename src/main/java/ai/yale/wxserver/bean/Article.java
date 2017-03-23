@@ -30,5 +30,8 @@ public class Article {
 	public void setUrl(String url) {
 		Url = url;
 	}
-	
+	@Override
+	public String toString() {
+		return "Article [Title=" + Title + ", Description=" + Description + ", PicUrl=" + PicUrl + ", Url=" + Url + "]";
+	}
 }

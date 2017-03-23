@@ -11,6 +11,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
@@ -70,6 +72,7 @@ public class WxUtils {
 		String localSignature = SecurityUtils.SHA1(content.toString());
 
 		return localSignature.equals(signature);
+
 	}
 
 	/**
@@ -106,7 +109,6 @@ public class WxUtils {
 		reply.setCreateTime((new Date()).getTime());
 		reply.setMsgType(Configuration.MESSAGE_TEXT);
 		reply.setContent(content);
-		// System.out.println(reply);
 		return MessageUtils.textMessageToXml(reply);
 	}
 
@@ -125,7 +127,6 @@ public class WxUtils {
 		reply.setMsgType(Configuration.MESSAGE_NEWS);
 		reply.setArticleCount((long) articles.size());
 		reply.setArticles(articles);
-
 		return MessageUtils.newsMessageToXml(reply);
 	}
 
@@ -139,7 +140,6 @@ public class WxUtils {
 		String url = configuration.getAccessTokenUrl().replace("APPID", configuration.getAppId()).replace("APPSECRET",
 				configuration.getAppSecret());
 		AccessTokenVo vo = restTemplate.getForObject(url, AccessTokenVo.class);
-		System.out.println(vo);
 		return vo;
 	}
 
@@ -163,7 +163,6 @@ public class WxUtils {
 			e.printStackTrace();
 		}
 		restTemplate.getMessageConverters().add(new WxMessageConverter());
-
 		UploadTemporaryMeterialResultVo vo = restTemplate.postForObject(url, param,
 				UploadTemporaryMeterialResultVo.class);
 		return vo;
@@ -180,10 +179,8 @@ public class WxUtils {
 	public WxResultVo createMenu(String accessToken, String menu) {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getCreateMenuUrl().replace("ACCESS_TOKEN", accessToken);
-		System.out.println(menu);
 		JSONObject obj = JSON.parseObject(menu);
 		WxResultVo vo = restTemplate.postForObject(url, obj, WxResultVo.class);
-		System.out.println(vo.toString());
 		return vo;
 	}
 
@@ -197,7 +194,6 @@ public class WxUtils {
 		String url = configuration.getJsapiTicketUrl().replace("ACCESS_TOKEN", accessToken);
 		RestTemplate restTemplate = new RestTemplate();
 		JsapiTicketVo vo = restTemplate.getForObject(url, JsapiTicketVo.class);
-		System.out.println(vo.toString());
 		return vo;
 	}
 
@@ -214,9 +210,7 @@ public class WxUtils {
 		vo.setAppId(configuration.getAppId());
 		String src = configuration.getJsapiSignString().replace("TICKET", jsapiTicket)
 				.replace("NONCESTR", vo.getNonceStr()).replace("TIMESTAMP", vo.getTimestamp() + "").replace("URL", url);
-		System.out.println(src);
 		vo.setSignature(SecurityUtils.SHA1(src));
-		System.out.println(vo.toString());
 		return vo;
 	}
 
@@ -227,7 +221,6 @@ public class WxUtils {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getCreateQrcodeUrl().replace("TOKEN", accessToken);
 		QRCodeTicketVo result = restTemplate.postForObject(url, vo, QRCodeTicketVo.class);
-		System.out.println(result.toString());
 		return result;
 	}
 
@@ -238,7 +231,6 @@ public class WxUtils {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getLonglinkToShortlinkUrl().replace("ACCESS_TOKEN", accessToken);
 		LinkRespMessageVo result = restTemplate.postForObject(url, vo, LinkRespMessageVo.class);
-		System.out.println(result.toString());
 		return result;
 	}
 
@@ -253,7 +245,6 @@ public class WxUtils {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getGetUserSummaryUrl().replace("ACCESS_TOKEN", accessToken);
 		SummaryUserDataVo result = restTemplate.postForObject(url, vo, SummaryUserDataVo.class);
-		System.out.println(result.toString());
 		return result;
 	}
 
@@ -268,7 +259,6 @@ public class WxUtils {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getGetUserCumulateUrl().replace("ACCESS_TOKEN", accessToken);
 		AccumulatedUserDataVo result = restTemplate.postForObject(url, vo, AccumulatedUserDataVo.class);
-		System.out.println(result.toString());
 		return result;
 	}
 }

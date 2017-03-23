@@ -24,6 +24,9 @@ public class TextMessage extends BaseMessage {
 	public void setMsgId(Long msgId) {
 		MsgId = msgId;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "TextMessage [Content=" + Content + ", MsgId=" + MsgId + "]";
+	}
 }

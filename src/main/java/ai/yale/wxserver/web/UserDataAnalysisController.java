@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ai.yale.wxserver.service.UserDataAnalysisService;
 import ai.yale.wxserver.util.RespMessage;
-import ai.yale.wxserver.vo.DateVo;
 
 
 @RestController

@@ -5,7 +5,7 @@
 
 	<groupId>ai.yale</groupId>
 	<artifactId>WxServer</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.0.9-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>WxServer</name>
@@ -77,6 +77,29 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<!-- spring aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+
+		<!-- aspectj支持 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -87,6 +110,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>

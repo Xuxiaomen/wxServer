@@ -12,3 +12,20 @@ configuration: #微信参数配置
   longlink-to-shortlink-url: https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN
   get-user-summary-url: https://api.weixin.qq.com/datacube/getusersummary?access_token=ACCESS_TOKEN
   get-user-cumulate-url: https://api.weixin.qq.com/datacube/getusercumulate?access_token=ACCESS_TOKEN
+  
+logging:
+  file: c:/log.txt
+  config: classpath:logback-boot.xml
+  level: 
+    org.apache.log4j.BasicConfigurator: info
+    org.springframework.scheduling: info
+#    ai.yale.wxserver.web: debug
+    ai.yale.wxserver.util: debug
+  pattern:
+#    console: "%-20(%d{yyyyMMdd_HH:mm:ss.SSS} [%logger][%thread] [%-4relative])  
+#                [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}  
+                     -%msg%n"
+    file: "%-20(%d{yyyyMMdd_HH:mm:ss.SSS} [%logger{10}][%thread] [%-4relative])  
+                [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n"
+                

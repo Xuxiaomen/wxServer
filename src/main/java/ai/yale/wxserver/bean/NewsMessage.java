@@ -17,5 +17,8 @@ public class NewsMessage extends BaseMessage {
 	public void setArticles(List<Article> articles) {
 		Articles = articles;
 	}
-	
+	@Override
+	public String toString() {
+		return "NewsMessage [ArticleCount=" + ArticleCount + ", Articles=" + Articles + "]";
+	}
 }
