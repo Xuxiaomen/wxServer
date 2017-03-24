@@ -1,5 +1,10 @@
 package ai.yale.wxserver.util;
 
+/**
+ * 操作完成返回信息
+ * @author 徐梦
+ *
+ */
 public class RespMessage {
 	// 操作状态码 0：操作失败 1：操作成功 其他：自定义
 	public static final int SUCCESS = 1;

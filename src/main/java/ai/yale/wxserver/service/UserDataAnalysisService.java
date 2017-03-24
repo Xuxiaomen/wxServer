@@ -12,7 +12,7 @@ import ai.yale.wxserver.vo.SummaryUserDataVo;
 /**
  * @Title: UserDataAnalysisService
  * @Description: 用户分析数据接口实现
- * @author xumeng
+ * @author 徐梦
  *
  */
 @Service
@@ -32,8 +32,8 @@ public class UserDataAnalysisService {
 	public RespMessage getusersummary() {
 
 		DateVo dateVo = new DateVo();
-		dateVo.setBegin_date("2014-12-02");
-		dateVo.setEnd_date("2014-12-07");
+		dateVo.setBegin_date("2017-03-20");
+		dateVo.setEnd_date("2017-03-21");
 		SummaryUserDataVo summaryUserDataVo = wxUtils.userDataSummary(wxService.accessTokenVo.getAccess_token(), dateVo);
 		return RespMessage.success(summaryUserDataVo);
 
@@ -47,8 +47,8 @@ public class UserDataAnalysisService {
 	public RespMessage getusercumulate() {
 
 		DateVo dateVo = new DateVo();
-		dateVo.setBegin_date("2014-12-02");
-		dateVo.setEnd_date("2014-12-07");
+		dateVo.setBegin_date("2017-03-17");
+		dateVo.setEnd_date("2016-03-23");
 		AccumulatedUserDataVo accumulatedUserDataVo = wxUtils.userDateAccumulated(wxService.accessTokenVo.getAccess_token(), dateVo);
 		return RespMessage.success(accumulatedUserDataVo);
 

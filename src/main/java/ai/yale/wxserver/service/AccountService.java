@@ -15,7 +15,7 @@ import ai.yale.wxserver.vo.QRCodeResultVo;
 /**
  * @Title: AccountService
  * @Description: 微信二维码获取
- * @author xumeng
+ * @author 徐梦
  *
  */
 @Service
@@ -36,22 +36,12 @@ public class AccountService {
 	
 	public QRCodeResultVo qrCodeResultVo;
 	
-//	public RespMessage creatQRCodeTicket() {
-//		if (qrCodeTicketVo == null || "".equals(qrCodeTicketVo.getTicket())) {
-//			return RespMessage.error("服务器暂时未获取qr_code_ticket，请稍后再试");
-//		} else {
-//			return RespMessage.success(qrCodeTicketVo);
-//		}
-//	}
 	public RespMessage creatQRCode() {
+		
 		if (qrCodeResultVo != null && !qrCodeResultVo.getQRCodeImageUrl().equals("")) {
 			return RespMessage.success(qrCodeResultVo);
 		}
 		QRCodeRequestVo requestVo = new QRCodeRequestVo();
-//		创建临时二维码需要expire_seconds
-//		requestVo.setExpire_seconds(604800L);
-//		requestVo.setAction_name("QR_SCENE");
-//		创建永久二维码
 		requestVo.setAction_name("QR_LIMIT_SCENE");
 		SceneVo sceneVo = new SceneVo();
 		sceneVo.setScene_id(100L);
@@ -64,5 +54,6 @@ public class AccountService {
 		qrCodeResultVo.setQRCodeImageUrl(ImageUrl);
 		qrCodeResultVo.setQRCodeLinkUrl(qrCodeTicketVo.getUrl());
 		return RespMessage.success(qrCodeResultVo);
+		
 	}
 }

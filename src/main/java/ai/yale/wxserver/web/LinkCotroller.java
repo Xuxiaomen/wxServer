@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ai.yale.wxserver.service.LinkService;
 import ai.yale.wxserver.util.RespMessage;
 
+/**
+ * 微信长链接转短链接
+ * @author 徐梦
+ *
+ */
 @RestController
 @RequestMapping(value="/link")
 public class LinkCotroller {

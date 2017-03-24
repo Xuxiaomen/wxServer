@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 长链接转成短链接返回的json数据包
+ * @author 徐梦
+ *
+ */
 public class LinkRespMessageVo extends WxBaseRespMessageVo{
 	private String short_url;
 

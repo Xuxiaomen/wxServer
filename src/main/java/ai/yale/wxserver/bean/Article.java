@@ -1,7 +1,11 @@
 package ai.yale.wxserver.bean;
 
+/**
+ * 微信图文消息
+ * @author xumeng
+ *
+ */
 public class Article {
-
 	private String Title;
 	private String Description;
 	private String PicUrl;

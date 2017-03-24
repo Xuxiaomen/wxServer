@@ -17,6 +17,11 @@ import ai.yale.wxserver.service.WxService;
 import ai.yale.wxserver.util.RespMessage;
 import ai.yale.wxserver.vo.WxVo;
 
+/**
+ * 微信配置、消息处理、授权登录
+ * @author 徐梦
+ *
+ */
 @RestController
 public class WxController {
 

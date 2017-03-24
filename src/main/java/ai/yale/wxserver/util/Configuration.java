@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * @Title: Configuration
  * @Description: 接收配置信息
- * @author xumeng
+ * @author 徐梦
  */
 
 @Component
@@ -38,11 +38,6 @@ public class Configuration {
 	public static final String MESSAGE_VIEW = "VIEW";
 	// 微信发送的Token验证
 	public static String token;
-	// 测试号lvjia
-	// public static final String APPID = "wxede20d9286db6756";
-	// public static final String APPSECRET =
-	// "b548de5f324a3abc9cab2d9d32c49e15";
-	// 测试号xumeng
 	// 微信服务号ID
 	public String appId;
 	// 微信服务号密钥

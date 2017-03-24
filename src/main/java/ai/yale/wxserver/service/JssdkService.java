@@ -13,7 +13,7 @@ import ai.yale.wxserver.vo.JsapiSignatureVo;
 /**
  * @Title: JssdkService
  * @Description: jssdk获取签名
- * @author xumeng
+ * @author 徐梦
  *
  */
 @Service
@@ -35,9 +35,8 @@ public class JssdkService {
 		// 获取access_token
 		String accessToken = wxService.accessTokenVo.getAccess_token();
 		JsapiTicketVo vo = wxUtils.getJsapiTicket(accessToken);
-		
 		JsapiSignatureVo signatureVo = wxUtils.getJsapiSignature(vo.getTicket(), request.getHeader("referer"));
+		return RespMessage.success(signatureVo);
 		
-		return RespMessage.success(signatureVo);	
 	}
 }

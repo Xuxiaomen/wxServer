@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ai.yale.wxserver.service.UserDataAnalysisService;
 import ai.yale.wxserver.util.RespMessage;
 
-
+/**
+ * 用户分析数据统计
+ * @author 徐梦
+ *
+ */
 @RestController
 @RequestMapping(value = "/userdata")
 public class UserDataAnalysisController {

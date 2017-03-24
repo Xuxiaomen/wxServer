@@ -8,6 +8,11 @@ import ai.yale.wxserver.service.AccountService;
 import ai.yale.wxserver.util.RespMessage;
 import ai.yale.wxserver.vo.QRCodeTicketVo;
 
+/**
+ * 获取微信二维码
+ * @author 徐梦
+ *
+ */
 @RestController
 @RequestMapping(value = "/account")
 public class AccountController {

@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 验证消息的确来自微信服务器(检验signature对请求进行校验)
+ * @author 徐梦
+ *
+ */
 public class WxVo {
 	private String signature;
 	private String timestamp;

@@ -19,7 +19,7 @@ import ai.yale.wxserver.vo.UserInfoVo;
 /**
  * @Title: WxAuthService
  * @Description: 微信授权登录
- * @author xumeng
+ * @author 徐梦
  *
  */
 @Service
@@ -35,11 +35,13 @@ public class WxAuthService {
 	 * @throws IOException
 	 */
 	public void wxAuth(HttpServletResponse response) throws IOException {
+		
 		String backUrl = "http://yale-dev.s1.natapp.cc/callback";
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + configuration.getAppId() + "&redirect_uri="
 				+ URLEncoder.encode(backUrl, "utf-8") + "&response_type=code" + "&scope=snsapi_userinfo"
 				+ "&state=STATE#wechat_redirect";
 		response.sendRedirect(url);
+		
 	}
 
 	/**
@@ -65,5 +67,6 @@ public class WxAuthService {
 		UserInfoVo userInfoVo = restTemplate.getForObject(infoUrl, UserInfoVo.class);
 		System.out.println(userInfoVo.toString());
 		return RespMessage.success();
+		
 	}
 }

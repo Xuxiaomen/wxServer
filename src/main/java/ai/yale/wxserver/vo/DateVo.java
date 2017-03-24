@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 用户分析数据接口post的时间跨度
+ * @author 徐梦
+ *
+ */
 public class DateVo {
 	private String begin_date;
 	private String end_date;

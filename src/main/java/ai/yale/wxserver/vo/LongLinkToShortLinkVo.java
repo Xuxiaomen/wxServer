@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 长链接转成短链接post的参数
+ * @author 徐梦
+ *
+ */
 public class LongLinkToShortLinkVo {
 	private String action;
 	private String long_url;

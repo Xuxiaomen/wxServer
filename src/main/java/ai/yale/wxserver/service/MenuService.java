@@ -23,12 +23,12 @@ public class MenuService {
 	WxUtils wxUtils;
 	
 	public RespMessage createMenu(MenuJsonVo vo) {
-		// TODO Auto-generated method stub
+		
 		WxResultVo result = wxUtils.createMenu(wxService.accessTokenVo.getAccess_token(), vo.getMenuJson());
 		if (result.getErrcode() == 0) {
 			return RespMessage.success();
 		}
 		return RespMessage.error();
+		
 	}
-
 }

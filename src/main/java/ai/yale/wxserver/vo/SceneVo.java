@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 生成二维码请求参数:scene
+ * @author 徐梦
+ *
+ */
 public class SceneVo {
 	private Long scene_id;
 

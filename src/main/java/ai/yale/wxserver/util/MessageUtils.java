@@ -16,11 +16,10 @@ import com.thoughtworks.xstream.XStream;
 import ai.yale.wxserver.bean.Article;
 import ai.yale.wxserver.bean.NewsMessage;
 import ai.yale.wxserver.bean.TextMessage;
-import ai.yale.wxserver.vo.FaqRobotTextMessageReplyVo;
 
 /**
  * 消息类型转换
- * @author xumeng
+ * @author 徐梦
  *
  */
 public class MessageUtils {
@@ -34,9 +33,9 @@ public class MessageUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Map<String, String> streamToMap(InputStream inputStream){
+		
 		Map<String, String> map = new HashMap<>();
 		SAXReader reader = new SAXReader();
-		
 		Document document;
 		try {
 			document = reader.read(inputStream);
@@ -53,6 +52,7 @@ public class MessageUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
+			
 		}
 	}
 	
@@ -62,9 +62,11 @@ public class MessageUtils {
 	 * @return
 	 */
 	public static String textMessageToXml(TextMessage message) {
+		
 		XStream xStream = new XStream();
 		xStream.alias("xml", message.getClass());
 		return xStream.toXML(message);
+		
 	}
 	
 	/**
@@ -73,21 +75,12 @@ public class MessageUtils {
 	 * @return
 	 */
 	public static String newsMessageToXml(NewsMessage message) {
+		
 		XStream xStream = new XStream();
 		xStream.alias("xml", message.getClass());
 		xStream.alias("item", (new Article()).getClass());		
 		return xStream.toXML(message);
+		
 	}
-	
-	/**
-	 * 云问文本消息转换xml
-	 * @param message
-	 * @return
-	 */
-	public static String newsMessageToXml(FaqRobotTextMessageReplyVo result) {
-		XStream xStream = new XStream();
-		xStream.alias("xml", result.getClass());
-		xStream.alias("item", (new Article()).getClass());		
-		return xStream.toXML(result);
-	}
+
 }

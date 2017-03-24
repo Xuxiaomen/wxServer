@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 微信返回的JSON数据包基类
+ * @author 徐梦
+ *
+ */
 public class WxBaseRespMessageVo {
 	private Long errcode;
 	private String errmsg;

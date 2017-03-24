@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 用户分析数据接口累计用户数据
+ * @author 徐梦
+ *
+ */
 public class AccumulatedUserDataVo {
 	private String ref_date;
 	private int cumulate_user;

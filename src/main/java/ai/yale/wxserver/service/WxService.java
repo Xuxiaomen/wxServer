@@ -57,8 +57,8 @@ public class WxService {
 	 */
 	public String wxMessage(HttpServletRequest request) {
 
-		Map<String, String> map = WxUtils.receiveMessage(request);
-		System.out.println(map.toString());
+		Map<String, String> map = wxUtils.receiveMessage(request);
+//		System.out.println(map.toString());
 		if (map == null || map.size() == 0) {
 			return null;
 		}
@@ -69,50 +69,50 @@ public class WxService {
 		
 		switch (msgType) {
 		case Configuration.MESSAGE_TEXT:
-			 reply = WxUtils.replyTextMessage(map, "你好");
-			 System.out.println(reply);
+			 reply = wxUtils.replyTextMessage(map, "你好");
+			 // System.out.println(reply);
 			
-			if (map.get("Content").equals("1")) {
-				Article article = new Article();
-				article.setTitle("测试公众号");
-				article.setDescription("测试描述");
-				article.setPicUrl("http://img3.imgtn.bdimg.com/it/u=2487184179,3100424350&fm=23&gp=0.jpg");
-				article.setUrl("http://www.baidu.com");
-				
-				List<Article> articles = new ArrayList<>();
-				articles.add(article);
-
-				Article article1 = new Article();
-				article1.setTitle("测试公众号2");
-				article1.setDescription("测试描述2");
-				article1.setPicUrl("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1353085406,3342692239&fm=23&gp=0.jpg");
-				article1.setUrl("http://www.baidu.com");
-				
-				articles.add(article1);
-				reply = WxUtils.replyNewsMessage(map, articles);
-				System.out.println(reply);
-			} else if (map.get("Content").equals("2")) {
-				Article article = new Article();
-				article.setTitle("测试公众号2");
-				article.setDescription("测试描述2");
-				article.setPicUrl("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1353085406,3342692239&fm=23&gp=0.jpg");
-				article.setUrl("http://www.baidu.com");
-				
-				List<Article> articles = new ArrayList<>();
-				articles.add(article);
-
-				reply = WxUtils.replyNewsMessage(map, articles);
-			}
+//			if (map.get("Content").equals("1")) {
+//				Article article = new Article();
+//				article.setTitle("测试公众号");
+//				article.setDescription("测试描述");
+//				article.setPicUrl("http://img3.imgtn.bdimg.com/it/u=2487184179,3100424350&fm=23&gp=0.jpg");
+//				article.setUrl("http://www.baidu.com");
+//				
+//				List<Article> articles = new ArrayList<>();
+//				articles.add(article);
+//
+//				Article article1 = new Article();
+//				article1.setTitle("测试公众号2");
+//				article1.setDescription("测试描述2");
+//				article1.setPicUrl("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1353085406,3342692239&fm=23&gp=0.jpg");
+//				article1.setUrl("http://www.baidu.com");
+//				
+//				articles.add(article1);
+//				reply = wxUtils.replyNewsMessage(map, articles);
+//				// System.out.println(reply);
+//			} else if (map.get("Content").equals("2")) {
+//				Article article = new Article();
+//				article.setTitle("测试公众号2");
+//				article.setDescription("测试描述2");
+//				article.setPicUrl("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1353085406,3342692239&fm=23&gp=0.jpg");
+//				article.setUrl("http://www.baidu.com");
+//				
+//				List<Article> articles = new ArrayList<>();
+//				articles.add(article);
+//
+//				reply = wxUtils.replyNewsMessage(map, articles);
+//			}
 
 			break;
 		case Configuration.MESSAGE_EVENT:
 			String event = map.get("Event");
 			if (Configuration.MESSAGE_SUBSCRIBE.equals(event)) {
 				// 订阅消息
-				reply = WxUtils.replyTextMessage(map, "欢迎订阅");
+				reply = wxUtils.replyTextMessage(map, "你好，欢迎订阅房公信");
 			} else if (Configuration.MESSAGE_UNSUBSCRIBE.equals(event)) {
 				// 取消订阅消息
-				reply = WxUtils.replyTextMessage(map, "。。。");
+				reply = wxUtils.replyTextMessage(map, "。。。");
 			}
 			break;
 		case Configuration.MESSAGE_IMAGE:

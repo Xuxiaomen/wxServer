@@ -1,7 +1,11 @@
 configuration: #微信参数配置
   token: fgx_2017
-  app-id: wx89fc0d2eadcbb2d7
-  app-secret: 436e89c974fe6303ada90e46e3e25ae8
+#  测试号xumeng
+#  app-id: wx89fc0d2eadcbb2d7
+#  app-secret: 436e89c974fe6303ada90e46e3e25ae8
+#  房公信服务号
+  app-id: wx35394d582904abfa
+  app-secret: 18e65b905d53a680153cd6da1d7ccd4c
   access-token-url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
   upload-temprory-meterial-url: https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
   create-menu-url: https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
@@ -15,7 +19,7 @@ configuration: #微信参数配置
   
 logging:
   file: c:/log.txt
-  config: classpath:logback-boot.xml
+#  config: classpath:logback-boot.xml
   level: 
     org.apache.log4j.BasicConfigurator: info
     org.springframework.scheduling: info
@@ -26,6 +30,6 @@ logging:
 #                [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n"
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}  
                      -%msg%n"
-    file: "%-20(%d{yyyyMMdd_HH:mm:ss.SSS} [%logger{10}][%thread] [%-4relative])  
-                [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}  
+                     -%msg%n"
                 

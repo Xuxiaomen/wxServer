@@ -11,8 +11,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
@@ -42,7 +40,7 @@ import ai.yale.wxserver.vo.WxResultVo;
 /**
  * @Title: WxUtil
  * @Description: 微信公共库
- * @author xumeng
+ * @author 徐梦
  *
  */
 
@@ -81,7 +79,7 @@ public class WxUtils {
 	 * @param request
 	 * @return
 	 */
-	public static Map<String, String> receiveMessage(HttpServletRequest request) {
+	public Map<String, String> receiveMessage(HttpServletRequest request) {
 		InputStream inputStream;
 		try {
 			inputStream = request.getInputStream();
@@ -102,7 +100,7 @@ public class WxUtils {
 	 * @param content
 	 * @return
 	 */
-	public static String replyTextMessage(Map<String, String> receivedMessage, String content) {
+	public String replyTextMessage(Map<String, String> receivedMessage, String content) {
 		TextMessage reply = new TextMessage();
 		reply.setToUserName(receivedMessage.get("FromUserName"));
 		reply.setFromUserName(receivedMessage.get("ToUserName"));
@@ -119,7 +117,7 @@ public class WxUtils {
 	 * @param content
 	 * @return
 	 */
-	public static String replyNewsMessage(Map<String, String> receivedMessage, List<Article> articles) {
+	public String replyNewsMessage(Map<String, String> receivedMessage, List<Article> articles) {
 		NewsMessage reply = new NewsMessage();
 		reply.setToUserName(receivedMessage.get("FromUserName"));
 		reply.setFromUserName(receivedMessage.get("ToUserName"));
@@ -245,7 +243,9 @@ public class WxUtils {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = configuration.getGetUserSummaryUrl().replace("ACCESS_TOKEN", accessToken);
 		SummaryUserDataVo result = restTemplate.postForObject(url, vo, SummaryUserDataVo.class);
-		return result;
+//		String result = restTemplate.postForObject(url, vo, String.class);
+		System.out.println(result);
+		return null;
 	}
 
 	/**

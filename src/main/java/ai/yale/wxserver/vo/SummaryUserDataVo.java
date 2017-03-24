@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ *  用户分析数据接口增减用户数据
+ * @author 徐梦
+ *
+ */
 public class SummaryUserDataVo {
 	private String ref_date;
 	private int user_source;

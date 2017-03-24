@@ -13,7 +13,7 @@ import ai.yale.wxserver.util.RespMessage;
 
 /**
  * JS-SDK使用权限签名算法
- * @author xumeng
+ * @author 徐梦
  */
 @RestController
 @RequestMapping(value = "/jssdk")

@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * JS-SDK获取jsapiTicket的参数
+ * @author 徐梦
+ *
+ */
 public class JsapiTicketVo extends WxBaseRespMessageVo{
 	private String ticket;
 	private Long expires_in;

@@ -1,7 +1,11 @@
 package ai.yale.wxserver.bean;
-
 import java.util.List;
 
+/**
+ * 微信图文消息
+ * @author xumeng
+ *
+ */
 public class NewsMessage extends BaseMessage {
 	private Long ArticleCount;
 	private List<Article> Articles;

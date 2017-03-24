@@ -2,6 +2,11 @@ package ai.yale.wxserver.vo;
 
 import java.util.Arrays;
 
+/**
+ * 微信网页授权获取的用户信息
+ * @author 徐梦
+ *
+ */
 public class UserInfoVo {
 	private String openid;
 	private String nickname;

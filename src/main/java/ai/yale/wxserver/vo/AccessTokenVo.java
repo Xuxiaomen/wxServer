@@ -1,7 +1,11 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 微信网页授权用code换取的json数据
+ * @author 徐梦
+ *
+ */
 public class AccessTokenVo {
-
 	private String access_token;
 	private Long expires_in;
 	private String refresh_token;

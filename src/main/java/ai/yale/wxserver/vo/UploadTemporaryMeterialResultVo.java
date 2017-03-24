@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 新增临时素材返回的json数据包
+ * @author 徐梦
+ *
+ */
 public class UploadTemporaryMeterialResultVo {
 	private String type;
 	private String media_id;

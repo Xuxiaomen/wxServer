@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 创建二维码ticket时返回的参数
+ * @author 徐梦
+ *
+ */
 public class QRCodeTicketVo {
 	private String ticket;
 	private Long expire_seconds;

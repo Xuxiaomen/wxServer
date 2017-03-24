@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 自定义菜单post的json数据
+ * @author 徐梦
+ *
+ */
 public class MenuJsonVo {
 	private String menuJson;
 

@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * 通过ticket换取二维码图片URL和LinkUrl
+ * @author 徐梦
+ *
+ */
 public class QRCodeResultVo {
 	private String QRCodeImageUrl;
 	private String QRCodeLinkUrl;

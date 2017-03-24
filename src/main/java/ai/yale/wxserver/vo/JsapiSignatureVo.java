@@ -1,5 +1,10 @@
 package ai.yale.wxserver.vo;
 
+/**
+ * JS-SDK权限签名算法所需参数
+ * @author 徐梦
+ *
+ */
 public class JsapiSignatureVo {
 	private String appId;
 	private Long timestamp;
